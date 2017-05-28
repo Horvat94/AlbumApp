@@ -3,6 +3,7 @@ package com.example.tadej.albumaplikacija;
 import android.app.Application;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -107,5 +108,16 @@ public class Activity_zacetna extends AppCompatActivity {//v activityZacetna je 
     protected void onResume() {
         super.onResume();
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+
+        }
+        else if(newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+
+        }
     }
 }

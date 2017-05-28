@@ -39,6 +39,8 @@ class AdapterAlbum extends RecyclerView.Adapter<AdapterAlbum.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {//okvir za seznam
         public TextView txtHeader;
         public TextView txtFooter;
+        public TextView letniCasLabel;
+
         public ConstraintLayout loutRow;
         public ImageView iv;
 
@@ -48,6 +50,8 @@ class AdapterAlbum extends RecyclerView.Adapter<AdapterAlbum.ViewHolder> {
             txtFooter = (TextView) v.findViewById(R.id.txtViewRow2);
             iv = (ImageView) v.findViewById(R.id.imageViewRow);
             loutRow = (ConstraintLayout) v.findViewById(R.id.layoutRow);
+            letniCasLabel = (TextView) v.findViewById(R.id.colLabelZac);
+
         }
     }
 
@@ -77,7 +81,7 @@ class AdapterAlbum extends RecyclerView.Adapter<AdapterAlbum.ViewHolder> {
         final Album trenutni = all.getAlbumLok(position);
         Date date = new Date(trenutni.getDate());//long date format
         SimpleDateFormat ft = new SimpleDateFormat ("dd.MM");
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         String datAlbum = format.format(date);//dobim string v tej obliki dd.MM.yyyy HH:mm:ss
 
 
@@ -126,16 +130,16 @@ class AdapterAlbum extends RecyclerView.Adapter<AdapterAlbum.ViewHolder> {
             letniCas = ft.parse(letCasStr);//pretvorba iz string v long Date
             int cas = getLetniCas(letniCas);//vrne kateri letni cas je
             if(cas == 1){
-                holder.loutRow.setBackgroundColor(Color.rgb(251,92,17));
+                holder.letniCasLabel.setBackgroundColor(Color.rgb(251,92,17));
             }
             else if(cas == 2){
-                holder.loutRow.setBackgroundColor(Color.rgb(48,134,222));
+                holder.letniCasLabel.setBackgroundColor(Color.rgb(48,134,222));
             }
             else if(cas == 3){
-                holder.loutRow.setBackgroundColor(Color.rgb(205,39,251));
+                holder.letniCasLabel.setBackgroundColor(Color.rgb(205,39,251));
             }
             else if(cas == 4){
-                holder.loutRow.setBackgroundColor(Color.rgb(222,201,48));
+                holder.letniCasLabel.setBackgroundColor(Color.rgb(222,201,48));
             }
 
         } catch (ParseException e) {

@@ -134,6 +134,9 @@ public class ActivityMain extends AppCompatActivity {
 
     }//konec onCreate
 
+    public void prikaziDatePicker(View v){
+
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {

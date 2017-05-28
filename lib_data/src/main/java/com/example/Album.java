@@ -1,5 +1,6 @@
 package com.example;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.UUID;
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -25,7 +26,7 @@ public class Album {
         this.naslov = naslov;
         this.idUser = idUser;
         seznamSlik = new ArrayList<Slika>();
-        this.date = System.currentTimeMillis();
+        this.date = Calendar.getInstance().getTimeInMillis();
     }
 
     public String getNaslov() {

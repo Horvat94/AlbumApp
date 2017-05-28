@@ -122,14 +122,14 @@ public class Activity_EditSlika extends AppCompatActivity implements MapEventsRe
         oznaka.setPosition(tocka);
         oznaka.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
         oznaka.setIcon(getResources().getDrawable(R.drawable.person));
-        for (int i = map.getOverlays().size()-1; i>=0; i--){
-        if(oznaka instanceof Marker){//source
-            map.getOverlays().remove(i);
+        for (int i = map.getOverlays().size()-1; i>=0; i--){//izbris starih oznak
+            if(map.getOverlays().get(i) instanceof Marker){
+                map.getOverlays().remove(i);
+            }
         }
-        }
-
-       // map.getOverlays().clear();
         map.getOverlays().add(oznaka);
+
+
         map.invalidate();
 
     }
