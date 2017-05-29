@@ -159,7 +159,7 @@ public class ActivityAlbum extends AppCompatActivity {//activityAlbum ima vpogle
     ///izriše označbe na mapi
     public void izrisOznacb(){
         map.getOverlays().clear();
-        Collections.sort(al.getSeznamSlik(), new CustomComparator());
+        Collections.sort(al.getSeznamSlik(), new CustomComparator());//uredi seznam slik
         for(Slika s : al.getSeznamSlik())
         {
             Marker oznaka = new Marker(map);
@@ -187,11 +187,8 @@ public class CustomComparator implements Comparator<Slika> {//urejanje slik po d
     DateFormat f = new SimpleDateFormat("yyyy:MM:dd hh:mm:ss");
     @Override
     public int compare(Slika o1, Slika o2) {
-        try {
-            return f.parse(o1.getDatum()).compareTo(f.parse(o2.getDatum()));
-        } catch (ParseException e) {
-            throw new IllegalArgumentException(e);
-        }
+            return (o1.getDatum()).compareTo(o2.getDatum());
+
     }
 }
 

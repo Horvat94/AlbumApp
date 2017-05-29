@@ -24,9 +24,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.DataAll;
@@ -41,6 +44,7 @@ import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -48,10 +52,12 @@ import java.util.List;
 public class ActivityMain extends AppCompatActivity {
     ApplicationMy app;
     EditText naslovMain;
-    EditText datMain;
+    TextView datMain;
     TextView userIdMain;
     ImageView slikaMain;
     Album al;
+    private DatePicker mDatePicker;
+    private TimePicker mTimePicker;
 
     private double lat;
     private double len;
@@ -89,7 +95,37 @@ public class ActivityMain extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         app = (ApplicationMy) getApplication();
         naslovMain =(EditText) findViewById(R.id.naslMain);
-        datMain =(EditText) findViewById(R.id.datMain);
+        datMain =(TextView) findViewById(R.id.datMain);
+        datMain.setOnLongClickListener(new View.OnLongClickListener(){//dolgi pritisk vklopi Dialog za izbiro novega datuma
+            @Override
+            public boolean onLongClick(View v) {
+                final AlertDialog.Builder mBuilder = new AlertDialog.Builder(ActivityMain.this);
+                View mView = getLayoutInflater().inflate(R.layout.dialog_datum,null);
+                //deklaracija iz xml datoteke
+               final DatePicker mDatePicker = (DatePicker) mView.findViewById(R.id.dlDatePck);
+                final Button test2 = (Button) mView.findViewById(R.id.dlgBtn);
+                test2.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {//nastavitev novega datuma
+                        Calendar cal = Calendar.getInstance();
+                        cal.set(Calendar.DAY_OF_MONTH, mDatePicker.getDayOfMonth());
+                        cal.set(Calendar.MONTH, mDatePicker.getMonth());
+                        cal.set(Calendar.YEAR, mDatePicker.getYear());
+                        al.setDate(cal.getTimeInMillis());
+                        update(al);
+                        Toast.makeText(ActivityMain.this,"Datum posodobljen",Toast.LENGTH_SHORT).show();
+
+                    }
+                });//konec onClickListener
+
+
+                mBuilder.setView(mView);
+                AlertDialog dialog = mBuilder.create();
+                dialog.show();//prikaže dialog
+
+                return false;
+            }
+        });
         userIdMain =(TextView) findViewById(R.id.idMain);
         stateNew = false;
         ID="";
@@ -137,6 +173,7 @@ public class ActivityMain extends AppCompatActivity {
     public void prikaziDatePicker(View v){
 
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {

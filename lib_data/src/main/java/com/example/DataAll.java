@@ -104,8 +104,8 @@ public class DataAll {
         DataAll da = new DataAll();
         Date danes = new Date();
         da.uporabnik = new User("Tadej.Horvat5@gmail.com","Tedi");
-        da.album  = new Album("Izlet na Dunaj",da.getUporabnik().getIdUser());
-        da.album.setDate(1220227200);
+       /* da.album  = new Album("Izlet na Dunaj",da.getUporabnik().getIdUser());
+        da.album.setDate(1220227200);*/
       /*  da.getAlbum().dodajSliko("nekaj",21.1353556,22.2345689,"3.5.2015","slika.jpg");
         da.getAlbum().dodajSliko("Dunajska cesta",21.1223556,221.455689," ","DSC00152.jpeg");
         da.getAlbum().dodajSliko("Zivalski vrt",21.1353556,22.2345689,"","DSC00112.jpeg");
@@ -130,7 +130,7 @@ public class DataAll {
         da.dodajAlbumList(da.getAlbum());
 
         //da.getAlbum().izpis();
-        da.album  = new Album("Izlet na Madzarsko",da.getUporabnik().getIdUser());
+      /* da.album  = new Album("Izlet na Madzarsko",da.getUporabnik().getIdUser());
         da.dodajAlbumList(da.getAlbum());
         da.album.setDate(1220227700);
 
@@ -165,7 +165,7 @@ public class DataAll {
         da.album  = new Album("New York",da.getUporabnik().getIdUser());
         da.dodajAlbumList(da.getAlbum());
         da.album.setDate(1220226200);
-
+*/
         return da;
     }
 
